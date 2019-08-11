@@ -1,0 +1,34 @@
+{% extends 'base/base.html' %}
+
+{%  block content %}
+
+<table class="table table-hover">
+	<tr class="">
+		<th class="">Region ID</th>
+		<th class="">Codigo Region</th>
+		<th class="">Nombre Region </th>
+		<th class="">Estado Region</th>
+		<th class="">Nombre Asociado Municipio</th>
+		<th class="">Acciones</th>
+	</tr>
+	{% if regiones %}
+	{% for region in regiones %} 
+
+	<tr class="">
+		<th class="">{{ region.id }} </th>
+		<td class="">{{ region.CodigoRegion }} </td>
+		<td class="">{{ region.NombreRegion }} </td>
+		<td class="">{{ region.EstadoRegion }} </td>
+		<td class="">{{ region.Municipio.NombreMunicipio }} {{ region.Municipio.EstadoMunicipio }}</td>
+		<td class="">
+			<a href="/region_edit/{{ region.id }}" class="btn btn-primary btn-sm"> Editar </a>
+			<a href="/region_delete/{{ region.id }}" class="btn btn-danger btn-sm"> Eliminar </a>
+		</td>		
+	</tr>
+	{% endfor %}
+	{% else %}
+	<h1>No existen registros</h1>
+	{% endif %}
+</table>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base/base.html' %}
+
+{%  block content %}
+
+<table class="table table-hover">
+	<tr class="">
+		<th class="col-xs-2 col-sm-2 col-md-2 cabecera">Municipio ID</th>
+		<th class="col-xs-2 col-sm-2 col-md-2 cabecera">Codigo Municipio</th>
+		<th class="col-xs-4 col-sm-4 col-md-4 cabecera">Nombre Municipio </th>
+		<th class="col-xs-2 col-sm-2 col-md-2 cabecera">Estado Municipio</th>
+		<th class="col-xs-2 col-sm-2 col-md-2 cabecera">Acciones</th>
+	</tr>
+	{% if municipios %}
+	{% for municipio in municipios %}
+	<tr class="">
+		<th class="col-xs-2 col-sm-2  col-md-2 fila-datos">{{ municipio.id }} </th>
+		<td class="col-xs-2 col-sm-2  col-md-2 fila-datos">{{ municipio.CodigoMunicipio }} </td>
+		<td class="col-xs-4 col-sm-4  col-md-4 fila-datos">{{ municipio.NombreMunicipio }} </td>
+		<td class="col-xs-2 col-sm-2  col-md-2 fila-datos">{{ municipio.EstadoMunicipio }} </td>
+		<td class="col-xs-2 col-sm-2  col-md-2 fila-datos">
+			<a href="/municipio_edit/{{ municipio.id }}" class="btn btn-primary btn-sm"> Editar </a>
+			<a href="/municipio_delete/{{ municipio.id }}" class="btn btn-danger btn-sm"> Eliminar </a>
+		</td>
+	</tr>
+	{% endfor %}
+	{% else %}
+	<h1>No existen registros</h1>
+	{% endif %}
+</table>
+
+{% endblock %}

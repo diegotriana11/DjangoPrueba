@@ -1,0 +1,16 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<form method="post">
+	{% csrf_token %}
+	{% for field in form %}
+		{% ifequal field.Municipio 'A' %}
+				<h2>Existen</h2>
+			{% else %}
+				{{field.label_tag }} {{ field }}
+			{% endifequal %}			
+	{% endfor %}
+	<button type="submit">Guardar</button>
+	
+</form>
+{% endblock %}
